@@ -1,27 +1,18 @@
-db.exemplo.updateMany({},
+db.exemplo.updateMany({
+  nome: "Big Mac",
+},
   {
-   $set: {
-    avaliacao: 0,
-   },
-  });
+    $currentDate: {
+      ultimaModificacao: { $type: "timestamp" }
+    },
+  },
+);
 
-db.exemplo.updateMany({
-  tags: { $all: ["bovino"],
-}},
-{
-  $inc: { avaliacao: 5 },
-});
-
-db.exemplo.updateMany({
-  tags: { $all: ["ave"],
-}},
-{
-  $inc: { avaliacao: 3 },
-});
-
-db.exemplo.find({},
+db.exemplo.find({
+  ultimaModificacao: { $exists: true },
+},
 {
   nome: 1,
-  avaliacao: 1,
   _id: 0,
-});
+}
+);
