@@ -1,6 +1,6 @@
 db.produtos.find(
   {
-    ingredientes: { $all: ["picles"] }
+    ingredientes: { $all: ["picles"] },
   },
   {
     nome: 1,
