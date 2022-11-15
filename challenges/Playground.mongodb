@@ -1,18 +1,14 @@
-db.exemplo.updateMany({
-  nome: "Big Mac",
-},
+db.exemplo.find(
   {
-    $currentDate: {
-      ultimaModificacao: { $type: "timestamp" }
+    valoresNutricionais: {
+      $elemMatch: {
+        tipo: "proteínas",
+        percentual: { $gte: 30, $lte: 40 },
+      },
     },
   },
-);
-
-db.exemplo.find({
-  ultimaModificacao: { $exists: true },
-},
-{
-  nome: 1,
-  _id: 0,
-}
+  {
+    nome: 1,
+    _id: 0,
+  },
 );
