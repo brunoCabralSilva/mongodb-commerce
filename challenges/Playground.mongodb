@@ -1,11 +1,27 @@
-db.exemplo.updateMany(
+db.exemplo.updateMany({},
   {
-    nome: { $ne: "McChicken" },
-    ingredientes: { $not: { $all: ["ketchup"] }},
-  },
-  {
-   $push: {
-    ingredientes: "ketchup",
+   $set: {
+    avaliacao: 0,
    },
-  },
-);
+  });
+
+db.exemplo.updateMany({
+  tags: { $all: ["bovino"],
+}},
+{
+  $inc: { avaliacao: 5 },
+});
+
+db.exemplo.updateMany({
+  tags: { $all: ["ave"],
+}},
+{
+  $inc: { avaliacao: 3 },
+});
+
+db.exemplo.find({},
+{
+  nome: 1,
+  avaliacao: 1,
+  _id: 0,
+});
