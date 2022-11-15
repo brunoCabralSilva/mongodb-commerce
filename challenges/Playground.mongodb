@@ -1,15 +1,11 @@
 db.exemplo.find(
   {
-    valoresNutricionais: {
-      $elemMatch: {
-        tipo: "proteínas",
-        percentual: { $gte: 30, $lte: 40 },
-      }
-  }
+    ingredientes: { $all: ["picles"] }
   },
   {
     nome: 1,
-    _id: 0,
+    ingredientes: 1,
     valoresNutricionais: 1,
+    _id: 0,
   },
 );
