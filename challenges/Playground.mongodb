@@ -1,11 +1,21 @@
-db.exemplo.find(
+db.exemplo.updateMany(
   {
-    ingredientes: { $all: ["picles"] },
+    $or: [
+      { nome: "Big Mac" },
+      { nome: "Quarteirão com Queijo" },
+    ],
+    ingredientes: { $not: { $all: ["bacon"] } },
   },
   {
-    nome: 1,
-    ingredientes: 1,
-    valoresNutricionais: { $slice: 3 },
-    _id: 0,
+    $push: { 
+      ingredientes: "bacon",
+    }
   },
 );
+
+db.exemplo.find({}, 
+{
+  nome: 1,
+  ingredientes: 1,
+  _id: 0,
+});
