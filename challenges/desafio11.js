@@ -1,4 +1,4 @@
-db.exemplo.find(
+db.produtos.find(
   {
     $nor: [
       {

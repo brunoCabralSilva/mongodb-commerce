@@ -1,14 +1,18 @@
 db.exemplo.find(
   {
-    valoresNutricionais: {
-      $elemMatch: {
-        tipo: "proteínas",
-        percentual: { $gte: 30, $lte: 40 },
+    $nor: [
+      {
+        nome: { $eq: "Big Mac" },
       },
-    },
+      {
+        nome: { $eq: "McChicken" },
+      },
+    ],
   },
   {
-    nome: 1,
     _id: 0,
+    nome: 1,
+    curtidas: 1,
+    vendidos: 1,
   },
 );
