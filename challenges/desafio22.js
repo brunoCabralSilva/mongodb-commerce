@@ -5,7 +5,7 @@ db.produtos.updateMany({},
     },
   });
   
-db.produtos.updateMany({
+db.produtos.updateOne({
   nome: "Big Mac",
 }, 
 {
@@ -26,7 +26,6 @@ db.produtos.updateMany({
 db.produtos.find({}, 
 {
   nome: 1,
-  tags: 1,
   vendasPorDia: 1,
   _id: -1,
 });
