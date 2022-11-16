@@ -13,4 +13,4 @@ db.produtos.updateMany({},
     nome: 1,
     tags: 1,
     _id: -1,
-  }).sort();
+  });

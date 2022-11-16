@@ -15,11 +15,11 @@ db.produtos.updateMany({
 });
   
 db.produtos.updateMany({
-  tags: { $all: ["bovino"] },
+  tags: { $in: ["bovino"] },
 }, 
 {
   $inc: {
-    "vendasPorDia.7": 120,
+    "vendasPorDia.6": 120,
   },
 });
   
