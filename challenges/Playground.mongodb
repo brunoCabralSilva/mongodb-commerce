@@ -1,16 +1,17 @@
 db.exemplo.updateMany({}, 
-{
-  $push: {
-    tags: {
-      $each: ["combo", "tasty"],
-      $sort: 1,
+  {
+    $push: {
+      valoresNutricionais: {
+        $each: [],
+        $sort: { percentual: -1 },
+      },
     },
   },
-});
-
-db.exemplo.find({}, 
-{
-  nome: 1,
-  tags: 1,
-  _id: -1,
-}).sort();
+);
+  
+  db.exemplo.find({}, 
+  {
+    nome: 1,
+    valoresNutricionais: 1,
+    _id: -1,
+  });
