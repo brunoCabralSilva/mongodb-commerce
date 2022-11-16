@@ -1,22 +1,3 @@
-db.exemplo.updateMany(
-  {
-    valoresNutricionais: {
-      $elemMatch: {
-        tipo: "sódio",
-        percentual: { $gt: 20, $lt: 40 },
-      },
-    },
-  },
-  {
-    $push: {
-      tags: "contém sódio",
-    }
-  },
-);
-  
-db.exemplo.find({}, 
-{
-  nome: 1,
-  tags: 1,
-  _id: -1,
+db.produtos.count({
+  nome: /mc/i ,
 });
