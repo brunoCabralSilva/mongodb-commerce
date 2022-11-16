@@ -1,11 +1,16 @@
-db.exemplo.updateMany({
-  nome: "Quarteirão com Queijo",
-},
-{ $pop: { ingredientes: -1 }});
+db.exemplo.updateMany({}, 
+{
+  $push: {
+    tags: {
+      $each: ["combo", "tasty"],
+      $sort: 1,
+    },
+  },
+});
 
 db.exemplo.find({}, 
 {
-nome: 1,
-ingredientes: 1,
-_id: 0,
-});
+  nome: 1,
+  tags: 1,
+  _id: -1,
+}).sort();
