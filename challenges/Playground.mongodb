@@ -1,21 +1,11 @@
-db.exemplo.updateMany(
-  {
-    $or: [
-      { nome: "Big Mac" },
-      { nome: "Quarteirão com Queijo" },
-    ],
-    ingredientes: { $not: { $all: ["bacon"] } },
-  },
-  {
-    $push: { 
-      ingredientes: "bacon",
-    }
-  },
-);
+db.exemplo.updateMany({
+  nome: "Quarteirão com Queijo",
+},
+{ $pop: { ingredientes: -1 }});
 
 db.exemplo.find({}, 
 {
-  nome: 1,
-  ingredientes: 1,
-  _id: 0,
+nome: 1,
+ingredientes: 1,
+_id: 0,
 });
